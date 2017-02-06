@@ -24,6 +24,7 @@ android {
         targetSdkVersion 23
         versionCode verCode
         versionName "1.0"
+        versionName APP_VERSION
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -34,6 +35,37 @@ android {
         }
         debug {
             signingConfig signingConfigs.release
+        }
+    }
+//修改生成的apk名字及输出文件夹
+    applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            //新名字
+            def newName
+            //时间戳
+            def timeNow
+            //输出文件夹
+            def outDirectory
+            //是否为Jenkins打包，输出路径不同
+            if ("true".equals(IS_JENKINS)) {
+                //Jenkins打包输出到服务器路径
+                timeNow = BUILD_TIME
+                //BUILD_PATH为服务器输出路径
+                outDirectory = "E:\\JenkinsApk"
+                //AutoBuildTest-v1.0.1-xiaomi-release.apk
+                newName = 'app_Jenkins_' + APP_VERSION +  '.apk'
+            } else {
+                //本机打包输出在本机路径
+                timeNow = getDate()
+                outDirectory = "E:\\JenkinsApk"
+                if ('debug'.equals(variant.buildType.name)) {
+                    newName = "app_admin_debug${APP_VERSION}-debug.apk"
+                } else {
+                    //AutoBuildTest-v1.0.1-xiaomi-release.apk
+                    newName = 'app_admin_release' + APP_VERSION + '.apk'
+                }
+            }
+            output.outputFile = new File(outDirectory+'/'+timeNow, newName)
         }
     }
 }
