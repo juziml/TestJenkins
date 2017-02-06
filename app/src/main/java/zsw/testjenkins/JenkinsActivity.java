@@ -2,6 +2,8 @@ package zsw.testjenkins;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 /**
@@ -21,5 +23,6 @@ public class JenkinsActivity extends Activity {
         tv.setText("TestJenkins-");
         tv.setTextSize(30.0f);
         setContentView(tv);
+
     }
 }
