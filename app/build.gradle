@@ -79,7 +79,7 @@ android {
             } else {
                 //本机打包输出在本机路径
                 timeNow = getDate()
-                outDirectory = "E:\\JenkinsApk"
+                outDirectory = "E:\\localApk"
                 if ('debug'.equals(variant.buildType.name)) {
                     newName = 'app_admin_'+APP_VERSION+'Debug.apk'
                 } else {
