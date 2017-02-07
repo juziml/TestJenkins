@@ -48,7 +48,6 @@ android {
         }
     }
 
-
 //修改生成的apk名字及输出文件夹
     applicationVariants.all { variant ->
         variant.outputs.each { output ->
