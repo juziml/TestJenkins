@@ -71,7 +71,7 @@ android {
                 timeNow = getDate()
                 outDirectory = "E:\\JenkinsApk"
                 if ('debug'.equals(variant.buildType.name)) {
-                    newName = "app_admin_debug${APP_VERSION}-debug.apk"
+                    newName = 'app_admin_debug'+APP_VERSION+'.apk'
                 } else {
                     //AutoBuildTest-v1.0.1-xiaomi-release.apk
                     newName = 'app_admin_release' + APP_VERSION + '.apk'
