@@ -37,7 +37,15 @@ android {
             signingConfig signingConfigs.release
         }
     }
-
+    //渠道Flavors
+    productFlavors {
+        wandoujia {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "wandoujia"]
+        }
+        xiaomi {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "xiaomi"]
+        }
+    }
 
 
 //修改生成的apk名字及输出文件夹
