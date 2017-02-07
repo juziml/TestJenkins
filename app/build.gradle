@@ -48,7 +48,7 @@ android {
             signingConfig signingConfigs.release
         }
         debug {
-            signingConfig signingConfigs.release
+
         }
     }
 
@@ -70,7 +70,9 @@ android {
                 //BUILD_PATH为服务器输出路径
                 outDirectory = "E:\\JenkinsApk"
                 //AutoBuildTest-v1.0.1-xiaomi-release.apk
-                newName = 'app_Jenkins_'+APP_VERSION + '-' + variant.productFlavors[0].name + '-' + variant.buildType.name + '.apk'
+                newName = 'app_Jenkins_'+APP_VERSION
+                + '-' + variant.productFlavors[0].name
+                + '-' + variant.buildType.name + '.apk'
             } else {
                 //本机打包输出在本机路径
                 timeNow = getDate()
