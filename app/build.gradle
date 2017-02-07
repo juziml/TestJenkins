@@ -27,9 +27,9 @@ android {
     signingConfigs {
         release {
             keyAlias 'androiddebugkey'
-            keyPassword 'android'
+            keyPassword ALIAS_PASSWORD
             storeFile file('sinkkey.keystore')
-            storePassword 'android'
+            storePassword STORE_PASSWORD
         }
     }
     defaultConfig {
