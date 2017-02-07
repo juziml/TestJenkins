@@ -61,7 +61,7 @@ android {
             //是否为Jenkins打包，输出路径不同
             if ("true".equals(IS_JENKINS)) {
                 //Jenkins打包输出到服务器路径
-                timeNow = BUILD_TIME
+                timeNow = getDate()
                 //BUILD_PATH为服务器输出路径
                 outDirectory = "E:\\JenkinsApk"
                 //AutoBuildTest-v1.0.1-xiaomi-release.apk
