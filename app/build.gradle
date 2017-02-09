@@ -61,14 +61,12 @@ android {
             def outDirectory
             //是否为Jenkins打包，输出路径不同
             if ("true".equals(IS_JENKINS)) {
-                //Jenkins打包输出到服务器路径
-                timeNow = BUILD_TIME
                 //BUILD_PATH为服务器输出路径
-                outDirectory = BUILD_PATH_JENKINS
+                outDirectory = BUILD_PATH_JENKINS+"/"+BUILD_TIME
                 //AutoBuildTest-v1.0.1-xiaomi-release.apk
                 newName = 'app_Jenkins_'+APP_VERSION + '-' + variant.productFlavors[0].name + '-' + variant.buildType.name + '.apk'
             } else {
-                timeNow = BUILD_TIME
+                //本机打包输出在本机路径
                 outDirectory = BUILD_PATH_LOCAL
                 if ('debug'.equals(variant.buildType.name)) {
                     newName = 'app_admin_'+APP_VERSION+variant.productFlavors[0].name+'Debug.apk'
@@ -77,7 +75,7 @@ android {
                     newName = 'app_admin_'+APP_VERSION + '-' + variant.productFlavors[0].name + '-' + variant.buildType.name + '.apk'
                 }
             }
-            output.outputFile = new File(outDirectory+'/'+timeNow, newName)
+            output.outputFile = new File(outDirectory, newName)
         }
     }
 }
