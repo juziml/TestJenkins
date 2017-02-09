@@ -65,16 +65,12 @@ android {
                 timeNow = BUILD_TIME
                 outDirectory = BUILD_PATH_JENKINS
                 //AutoBuildTest-v1.0.1-xiaomi-release.apk
-                newName = APPNAME+APP_VERSION + '-' + variant.productFlavors[0].name + '-' + variant.buildType.name + '.apk'
+                newName = APPNAME+"-v"+APP_VERSION + '-' + variant.productFlavors[0].name + '-' + variant.buildType.name + '.apk'
             } else {
                 //本机打包输出在本机路径
+                timeNow = getDate()
                 outDirectory = BUILD_PATH_LOCAL
-                if ('debug'.equals(variant.buildType.name)) {
-                    newName = APPNAME+APP_VERSION+variant.productFlavors[0].name+'Debug.apk'
-                } else {
-                    //AutoBuildTest-v1.0.1-xiaomi-release.apk
-                    newName = APPNAME+APP_VERSION + '-' + variant.productFlavors[0].name + '-' + variant.buildType.name + '.apk'
-                }
+                newName = APPNAME+APP_VERSION + '-' + variant.productFlavors[0].name + '-' + variant.buildType.name + '.apk'
             }
             output.outputFile = new File(outDirectory+"/"+timeNow, newName)
         }
