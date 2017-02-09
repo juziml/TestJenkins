@@ -70,7 +70,7 @@ android {
                 //本机打包输出在本机路径
                 timeNow = getDate()
                 outDirectory = BUILD_PATH_LOCAL
-                newName = APPNAME+APP_VERSION + '-' + variant.productFlavors[0].name + '-' + variant.buildType.name + '.apk'
+                newName = APPNAME+"-v"+APP_VERSION + '-' + variant.productFlavors[0].name + '-' + variant.buildType.name + '.apk'
             }
             output.outputFile = new File(outDirectory+"/"+timeNow, newName)
         }
