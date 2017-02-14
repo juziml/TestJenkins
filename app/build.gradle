@@ -63,7 +63,7 @@ android {
                 //BUILD_PATH为服务器输出路径
                 timeNow = BUILD_TIME
                 outDirectory = BUILD_PATH_JENKINS
-                //AutoBuildTest-v1.0.1-xiaomi-release.apk
+                //xx-v1.0-xiaomi-release.apk
                 newName = APPNAME+"-v"+APP_VERSION + '-' + variant.productFlavors[0].name + '-' + variant.buildType.name + '.apk'
             } else {
                 //本机打包输出在本机路径
