@@ -22,7 +22,7 @@ public class JenkinsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         TextView tv = new TextView(this);
-        tv.setText("TestJenkins-"+BuildConfig.URL_CONFIG);
+        tv.setText("URL_CONFIG-"+BuildConfig.URL_CONFIG);
         tv.setTextSize(30.0f);
         setContentView(tv);
     }
