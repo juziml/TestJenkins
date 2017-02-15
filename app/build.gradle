@@ -10,6 +10,10 @@ def verCode = 14
 android {
 //渠道Flavors
     productFlavors {
+        //再debug环境上额外添加的测试环境
+        istest {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "istest"]
+        }
         xiaomi {
             manifestPlaceholders = [UMENG_CHANNEL_VALUE: "xiaomi"]
         }
@@ -37,16 +41,32 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+        //仅使用正式环境地址，只允许一个
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
+            buildConfigField 'String','URL_CONFIG',RELEASE_URL
         }
+        //使用测试环境地址，可设置多个
         debug {
+            applicationIdSuffix '.debug'
             signingConfig signingConfigs.release
+            buildConfigField 'String','URL_CONFIG',DEBUG_URL
         }
     }
 
+    //遍历渠道
+    productFlavors.each {
+        flavors ->
+            if(flavors.name.equals("istest")){
+                //指定不同的applicationId,
+                flavors.applicationIdSuffix '.istest'
+                flavors.buildConfigField 'String','URL_CONFIG',ISTEST_URL
+            }
+
+
+    }
 
 
 //修改生成的apk名字及输出文件夹
